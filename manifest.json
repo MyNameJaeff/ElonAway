@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "ElonAway",
+    "version": "1.0",
+    "description": "ElonAway is a browser extension that helps you stay away from Elon Musk, removing his content from your browsing experience.",
+    
+    "icons": {
+      "48": "icons/border-48.png"
+    },
+  
+    "host_permissions": [
+      "*://*.x.com/*",
+      "*://*/*"
+    ],
+  
+    "content_scripts": [
+      {
+        "matches": ["https://x.com/elonmusk"],
+        "js": ["elonPageFixer.js"],
+        "run_at": "document_start"
+      },
+      {
+        "matches": ["*://*.x.com/*"],
+        "exclude_matches": ["https://x.com/elonmusk"],
+        "js": ["twitterTweetsFixer.js"],
+        "run_at": "document_start"
+      }
+    ]
+  }
+  
